@@ -29,7 +29,7 @@
   </div>
 <% end %>
 
-<%= link_to 'Back', root_path %>
+<%= link_to '< Back', root_path %>
 <% if user_signed_in? %>
 <%= button_to "Log Out", destroy_user_session_path, method: :delete %>
 <% end %>
