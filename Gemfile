@@ -28,6 +28,7 @@ gem 'stimulus-rails'
 gem 'devise'
 gem 'jbuilder'
 gem 'rubocop', '>= 1.0', '< 2.0'
+gem 'rails-ujs'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

@@ -1,8 +1,9 @@
 # config/routes.rb
 Rails.application.routes.draw do
+  get 'home/index'
   devise_for :users
 
-  root "groups#index"
+  root "home#index"
   
   resources :groups, only: [:index, :new, :create]
 end
