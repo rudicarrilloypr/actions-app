@@ -1,26 +1,117 @@
-<h2>Log in</h2>
+<style>
+     body, html {
+    margin: 0;
+     }
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    .navbar {
+    width: 100%;
+     }
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    /* Estilos para centrar el título LOGIN */
+    .login-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
+    .login-nav span,
+    .navbar-brand,
+    .login-btn {
+        font-family: 'Proxima Nova', sans-serif; /* Cambio de tipografía */
+        font-weight: bold; /* Estilo bold */
+        color: white; /* Color blanco */
+    }
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+    .navbar-brand {
+        font-size: 24px; /* Tamaño de letra más grande */
+        text-decoration: none;
+    }
 
-<%= render "devise/shared/links" %>
+    .login-btn {
+        background: none; /* Elimina el fondo */
+        border: none; /* Elimina el borde */
+        text-decoration: none; /* Elimina el subrayado */
+    }
+
+     a {
+        text-decoration: none; /* Elimina el subrayado */
+        color: lightgray; /* Cambia el color a gris */
+        text-align: center; /* Centra el texto */
+        align-items: center; /* Centra el contenido */
+        margin: 5px 10px; /* Centra el elemento */
+        font-family: 'Proxima Nova', sans-serif;
+
+     }
+
+     .centered-links {
+    display: flex;
+    justify-content: center; /* Alinea los elementos en el eje horizontal */
+    align-items: center;     /* Alinea los elementos en el eje vertical */
+    height: 100vh;           /* Toma toda la altura de la ventana */
+    position: absolute;      /* Posicionamiento absoluto */
+    top: 0;
+    left: 0;
+    width: 100%;             /* Toma todo el ancho de la ventana */
+    pointer-events: none;    /* Asegura que los clicks pasen a través del contenedor */
+}
+
+.centered-links a {
+    pointer-events: auto;    /* Habilita los clicks en los enlaces */
+}
+
+.form-wrapper {
+  margin-top: 20px;  /* Añadir una pequeña separación en la parte superior */
+}
+
+        .form-control {
+            width: 100%;
+            font-size: 16px;
+            padding: 12px 20px;
+            border: 1px solid lightgray;  
+        }
+        
+        .btn-primary {
+            font-size: 16px;
+            padding: 12px 20px;
+        }
+    
+</style>
+
+<div class="container mt-5">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'mt-4'}) do |f| %>
+        <nav class="navbar navbar-expand-lg" style="background-color: #3778c2; padding: 20px 0">
+            <div class="login-nav">
+                <%= link_to '<', root_path, class: "navbar-brand" %>
+                <span class="navbar-text">
+                    LOGIN
+                </span>
+                <%= f.submit "Log in", class: "login-btn" %>
+            </div>
+        </nav>
+
+        <div class="mt-5">
+            <!-- Envoltorio para las barras de email y contraseña -->
+            <div class="form-wrapper">
+                <div class="form-group">
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: "Email", style: "color: lightgray;" %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', placeholder: "Password", style: "color: lightgray;" %>
+                </div>
+            </div>
+
+            <% if devise_mapping.rememberable? %>
+                <div class="form-check">
+                    <%= f.check_box :remember_me, class: 'form-check-input' %>
+                    <%= f.label :remember_me, class: 'form-check-label' %>
+                </div>
+            <% end %>
+        </div>
+
+        <div class="centered-links">
+            <%= render "devise/shared/links" %>
+        </div>
+    <% end %>
+</div>
