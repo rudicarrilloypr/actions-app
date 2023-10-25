@@ -4,15 +4,17 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @groups = Group.all
+    @groups = current_user.groups
   end
 
   def new
     @group = Group.new
+    @available_icons = ['fas fa-car', 'fas fa-home', 'fas fa-bicycle', 'fas fa-bus', 'fas fa-shopping-cart',
+                        'fas fa-utensils', 'fas fa-plane', 'fas fa-money-bill-wave', 'fas fa-hamburger', 'fas fa-university']
   end
 
   def create
-    @group = Group.new(group_params)
+    @group = current_user.groups.build(group_params)
 
     if @group.save
       redirect_to root_path, notice: 'Category created successfully!'

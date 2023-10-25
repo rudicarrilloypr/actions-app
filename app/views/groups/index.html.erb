@@ -1,13 +1,11 @@
-# app/views/groups/index.html.erb
-
 <h1>Categories</h1>
 
 <% @groups.each do |group| %>
   <div>
     <h3><%= group.name %></h3>
-    <img src="<%= group.icon %>" alt="<%= group.name %> Icon">
+    <i class="<%= group.icon %>" aria-label="<%= group.name %> Icon"></i>
     <p>Total: <%= group.entities.sum(:amount) %></p>
-    <%= link_to 'View Transactions', '#' %> <!-- You can link to the transactions page once it's created -->
+    <%= link_to 'View Transactions', group_entities_path(group) %>
   </div>
 <% end %>
 

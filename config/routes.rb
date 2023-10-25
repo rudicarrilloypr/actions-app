@@ -5,5 +5,8 @@ Rails.application.routes.draw do
 
   root "home#index"
   
-  resources :groups, only: [:index, :new, :create]
+  resources :groups do
+    resources :entities, only: [:index, :new, :create]
+  end
+  
 end

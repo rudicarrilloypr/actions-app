@@ -1,0 +1,19 @@
+<h1>Add a new transaction for <%= @group.name %></h1>
+
+<%= form_with model: [@group, @entity] do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :amount %>
+    <%= form.number_field :amount %>
+  </div>
+
+  <div>
+    <%= form.submit "Save" %>
+  </div>
+<% end %>
+
+<%= link_to '< Back', group_entities_path(@group) %>

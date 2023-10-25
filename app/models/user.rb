@@ -6,4 +6,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   # Validaciones de Devise ya incluidas
   validates :name, presence: true, uniqueness: true
+
+  has_many :groups
 end

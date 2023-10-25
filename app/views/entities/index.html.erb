@@ -1,0 +1,22 @@
+<h1>Transactions for <%= @group.name %></h1>
+<h3>Total Amount: <%= @total_amount %></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @entities.each do |entity| %>
+      <tr>
+        <td><%= entity.name %></td>
+        <td><%= entity.amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add a new transaction', new_group_entity_path(@group) %>
+<%= link_to '< Back', root_path %>

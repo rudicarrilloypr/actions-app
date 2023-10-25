@@ -4,7 +4,7 @@
    <img src="./app/assets/images/rc-sd-logo.PNG" alt="Rudi Carrillo logo" width="23px" height="auto" />
   <br/>
     <h3><b> Actions App 📈</b></h3>
-     <img src="./app/assets/images/socials-banner.PNG" alt="Actions App Banner" />
+     <img src="./app/assets/images/actions-logo-banner.PNG" alt="Actions App Banner" />
   <br/>
 
 </div>
@@ -33,10 +33,16 @@
 
 
 <!-- PROJECT DESCRIPTION -->
+<div align="center">
 
-# 📖 Actions App <a name="about-project"></a>
+# 📖 Actions App
 
-**Actions App** mobile web application where you can manage your budget: you have a list of transactions associated with a category, so that you can see how much money you spent and on what.
+**"Elevate every exchange"** 
+</div>
+ <a name="about-project"></a>
+
+
+mobile web application where you can manage your budget: you have a list of transactions associated with a category, so that you can see how much money you spent and on what.
 
 ## 🛠 Built With <a name="built-with"></a>
 - Ruby on Rails
