@@ -25,8 +25,11 @@ class EntitiesController < ApplicationController
   private
 
   def set_group
-    @group = Group.find(params[:group_id])
-  end
+    @group = current_user.groups.find(params[:group_id])
+rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: "Not authorized to view this category."
+end
+
 
   def entity_params
     params.require(:entity).permit(:name, :amount)

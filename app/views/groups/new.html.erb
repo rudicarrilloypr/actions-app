@@ -1,5 +1,3 @@
-# app/views/groups/new.html.erb
-
 <h1>Add New Category</h1>
 
 <%= form_for @group do |f| %>
@@ -20,8 +18,15 @@
   </div>
 
   <div>
-    <%= f.label :icon %>
-    <%= f.text_field :icon %>
+    <%= f.label :icon, "Choose an icon" %>
+    <ul>
+      <% @available_icons.each do |icon| %>
+        <li>
+          <%= radio_button_tag 'group[icon]', icon, false, id: "icon_#{icon.gsub(' ', '_')}" %>
+          <%= label_tag "icon_#{icon.gsub(' ', '_')}", "<i class='#{icon}'></i>".html_safe %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 
   <div>
