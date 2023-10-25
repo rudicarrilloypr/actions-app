@@ -1,40 +1,243 @@
-<h1>Add New Category</h1>
+<style>
+body, html {
+  margin: 0;
+   }
 
-<%= form_for @group do |f| %>
-  <% if @group.errors.any? %>
-    <div>
-      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this category from being saved:</h2>
-      <ul>
-        <% @group.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+  .navbar {
+  width: 100%;
+   }
+
+  /* Estilos para centrar el título LOGIN */
+  .login-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+  }
+
+  .login-nav span,
+  .navbar-brand,
+  .login-btn {
+      font-family: 'Proxima Nova', sans-serif; /* Cambio de tipografía */
+      font-weight: bold; /* Estilo bold */
+      color: white; /* Color blanco */
+  }
+
+  .navbar-brand {
+      font-size: 24px; /* Tamaño de letra más grande */
+      text-decoration: none;
+  }
+
+  .navbar-text {
+    justify-content: center;
+    margin: 0;
+    margin-left: 70px;
+    flex-grow: 1;
+    text-align: center;
+}
+
+  .login-btn {
+      background: none; /* Elimina el fondo */
+      border: none; /* Elimina el borde */
+      text-decoration: none; /* Elimina el subrayado */
+  }
+
+   a {
+      text-decoration: none; /* Elimina el subrayado */
+      color: lightgray; /* Cambia el color a gris */
+      text-align: center; /* Centra el texto */
+      align-items: center; /* Centra el contenido */
+      margin: 5px 10px; /* Centra el elemento */
+      font-family: 'Proxima Nova', sans-serif;
+
+   }
+
+   .centered-links {
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    width: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.centered-links a {
+  pointer-events: auto;    /* Habilita los clicks en los enlaces */
+}
+
+.form-wrapper {
+margin-top: 20px;  /* Añadir una pequeña separación en la parte superior */
+}
+
+      .form-control {
+          width: 100%;
+          font-size: 16px;
+          padding: 12px 20px;
+          border: 1px solid lightgray;  
+      }
+      
+      .btn-primary {
+          font-size: 16px;
+          padding: 12px 20px;
+      }
+
+    .category-block {
+        border: 1px solid lightgray;
+        padding: 15px;
+        margin: 10px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .category-block i {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .category-details {
+        display: flex;
+        justify-content: space-between;
+        width: 100%
+    }
+
+    .category-link {
+        text-align: center;
+        width: 100%
+        margin-top: 15px;
+    }
+
+    .horizontal-center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;  
+}
+
+.main-logo {
+    position: fixed;
+    bottom: 10px;
+    right: 160px;
+    width: 70px; /* Cambia según el tamaño deseado */
+    height: auto;
+}
+/* Agregado para darle estilo al botón Save similar al de LOG IN */
+.btn-primary {
+    background-color: #3778c2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    display: block;
+    text-align: center;
+}
+
+/* Estilo para la lista de iconos, presentándola en una grilla estilizada */
+.icon-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.icon-item:hover {
+    background-color: #f2f2f2;
+}
+/* Estilo para que el input parezca una barra */
+.form-control {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;  /* Elimina el borde */
+    border-radius: 0;  /* Sin bordes redondeados */
+    box-shadow: none;  /* Elimina la sombra */
+    background-color: #f3f3f3;  /* Fondo claro para la barra */
+    box-sizing: border-box; /* Asegura que el padding y el borde estén incluidos en el tamaño total */
+}
+
+.form-group {
+    margin-bottom: 20px;  /* Espacio entre el input y el botón */
+}
+
+/* Centra el botón Save */
+.form-group.mt-4 {
+    text-align: center;
+    position: fixed;
+    right: 160px;
+}
+.btn-secondary {
+  position: fixed;
+  bottom: 200px;
+  right: 170px;
+}
+
+</style>
+
+<div class="container mt-5">
+    <nav class="navbar navbar-expand-lg" style="background-color: #3778c2; padding: 20px 0">
+        <div class="login-nav">
+            <span class="navbar-text">
+                Add New Category
+            </span>
+            <% if user_signed_in? %>
+            <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "login-btn" %>
+            <% end %>
+        </div>
+    </nav>
+
+    <div class="form-wrapper mt-5">
+
+        <%= form_for @group, html: { class: 'mt-3' } do |f| %>
+            <% if @group.errors.any? %>
+                <div class="alert alert-danger">
+                    <h2><%= pluralize(@group.errors.count, "error") %> prohibited this category from being saved:</h2>
+                    <ul>
+                        <% @group.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+
+            <div class="form-group">
+            <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
+        </div>
+        
+
+            <div class="form-group">
+            <%= f.label :icon, "Choose an icon" %>
+            <div class="icon-list">
+                <% @available_icons.each do |icon| %>
+                    <div class="icon-item">
+                        <%= radio_button_tag 'group[icon]', icon, false, id: "icon_#{icon.gsub(' ', '_')}" %>
+                        <%= label_tag "icon_#{icon.gsub(' ', '_')}", "<i class='#{icon} mr-1'></i>".html_safe %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+        
+
+            <div class="form-group mt-4">
+                <%= f.submit "Save", class: 'btn btn-primary' %>
+            </div>
         <% end %>
-      </ul>
+
+        <!-- Utilizando la clase para centrar "Back" -->
+        <div class="horizontal-center">
+            <%= link_to 'Back', root_path, class: "btn btn-secondary mt-4" %>
+        </div>
     </div>
-  <% end %>
-
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div>
-    <%= f.label :icon, "Choose an icon" %>
-    <ul>
-      <% @available_icons.each do |icon| %>
-        <li>
-          <%= radio_button_tag 'group[icon]', icon, false, id: "icon_#{icon.gsub(' ', '_')}" %>
-          <%= label_tag "icon_#{icon.gsub(' ', '_')}", "<i class='#{icon}'></i>".html_safe %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div>
-    <%= f.submit "Save" %>
-  </div>
-<% end %>
-
-<%= link_to '< Back', root_path %>
-<% if user_signed_in? %>
-<%= button_to "Log Out", destroy_user_session_path, method: :delete %>
-<% end %>
+    <img src="<%= asset_path 'actions-logo-noback.PNG' %>" alt="Actions App Logo" class="main-logo">
+</div>
