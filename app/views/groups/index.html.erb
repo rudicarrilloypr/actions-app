@@ -101,11 +101,21 @@ margin-top: 20px;  /* Añadir una pequeña separación en la parte superior */
         margin-bottom: 10px;
     }
 
+    .category-block .category-details i {
+    font-size: 30px;
+    margin-top: 17px;
+    margin-left: 12px;
+}
+
+
     .category-details {
-        display: flex;
-        justify-content: space-between;
-        width: 100%
-    }
+      display: flex;
+      justify-content: space-between;
+      align-items: center; /* Añadir alineación al centro */
+      width: 100%;
+      flex-direction: row; /* Cambio a row para que esté horizontal */
+  }
+  
 
     .category-link {
         text-align: center;
@@ -149,6 +159,16 @@ margin-top: 20px;  /* Añadir una pequeña separación en la parte superior */
     border: 1px solid white; /* Marco interno blanco */
 }
 
+.category-name {
+  font-family: 'Proxima Nova', sans-serif;
+  font-weight: 500;
+}
+
+.category-total {
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+}
 
 </style>
 
@@ -170,16 +190,17 @@ margin-top: 20px;  /* Añadir una pequeña separación en la parte superior */
 
     <div class="mt-5">
         <% @groups.each do |group| %>
-            <div class="category-block">
-                <i class="<%= group.icon %>" aria-label="<%= group.name %> Icon"></i>
-                <div class="category-details">
-                    <h3><%= group.name %></h3>
-                    <p>$ <%= group.entities.sum(:amount) %></p>
-                </div>
-                <div class="category-link">
-                    <%= link_to 'View Transactions', group_entities_path(group) %>
-                </div>
-            </div>
+          <div class="category-block">
+          <div class="category-details">
+              <i class="<%= group.icon %>" aria-label="<%= group.name %> Icon"></i>
+              <h3 class="category-name"><%= group.name %></h3>
+              <p class="category-total">$ <%= group.entities.sum(:amount) %></p>
+          </div>
+          <div class="category-link">
+              <%= link_to 'View Transactions', group_entities_path(group) %>
+          </div>
+      </div>
+      
         <% end %>
 
         <!-- Utilizando la clase para centrar "Add a new category" -->
