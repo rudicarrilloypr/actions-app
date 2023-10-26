@@ -183,6 +183,13 @@ margin-top: 20px;  /* Añadir una pequeña separación en la parte superior */
   right: 170px;
 }
 
+.back-btn-top-left {
+    position: fixed;
+    top: 15px;
+    right: 340px;
+}
+
+
 </style>
 
 <div class="container mt-5">
@@ -236,7 +243,8 @@ margin-top: 20px;  /* Añadir una pequeña separación en la parte superior */
 
         <!-- Utilizando la clase para centrar "Back" -->
         <div class="horizontal-center">
-            <%= link_to 'Back', root_path, class: "btn btn-secondary mt-4" %>
+        <%= link_to '<', root_path, class: "btn btn-secondary back-btn-top-left" %>
+
         </div>
     </div>
     <img src="<%= asset_path 'actions-logo-noback.PNG' %>" alt="Actions App Logo" class="main-logo">
