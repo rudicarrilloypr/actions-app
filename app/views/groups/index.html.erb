@@ -1,16 +1,213 @@
-<h1>Categories</h1>
+<style>
+body, html {
+  margin: 0;
+   }
 
-<% @groups.each do |group| %>
-  <div>
-    <h3><%= group.name %></h3>
-    <i class="<%= group.icon %>" aria-label="<%= group.name %> Icon"></i>
-    <p>Total: <%= group.entities.sum(:amount) %></p>
-    <%= link_to 'View Transactions', group_entities_path(group) %>
-  </div>
-<% end %>
+   .container {
+    position: relative;
+    min-height: 119vh;  
+}
 
-<%= link_to 'Add a new category', new_group_path %>
 
-<% if user_signed_in? %>
-<%= button_to "Log Out", destroy_user_session_path, method: :delete %>
-<% end %>
+  .navbar {
+  width: 100%;
+   }
+
+  .login-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%
+  }
+
+  .login-nav span,
+  .navbar-brand,
+  .login-btn {
+      font-family: 'Proxima Nova', sans-serif; /* Cambio de tipografía */
+      font-weight: bold; /* Estilo bold */
+      color: white; /* Color blanco */
+  }
+
+  .navbar-brand {
+      font-size: 24px; /* Tamaño de letra más grande */
+      text-decoration: none;
+  }
+
+  .navbar-text {
+    justify-content: center;
+    margin: 0;
+    margin-left: 2px;
+    flex-grow: 1;
+    text-align: center;
+}
+
+  .login-btn {
+      background: none; /* Elimina el fondo */
+      border: none; /* Elimina el borde */
+      text-decoration: none; /* Elimina el subrayado */
+  }
+
+   a {
+      text-decoration: none; /* Elimina el subrayado */
+      color: lightgray; /* Cambia el color a gris */
+      text-align: center; /* Centra el texto */
+      align-items: center; /* Centra el contenido */
+      margin: 5px 10px; /* Centra el elemento */
+      font-family: 'Proxima Nova', sans-serif;
+
+   }
+
+   .centered-links {
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    width: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.centered-links a {
+  pointer-events: auto;    /* Habilita los clicks en los enlaces */
+}
+
+.form-wrapper {
+margin-top: 20px;  /* Añadir una pequeña separación en la parte superior */
+}
+
+      .form-control {
+          width: 100%;
+          font-size: 16px;
+          padding: 12px 20px;
+          border: 1px solid lightgray;  
+      }
+      
+      .btn-primary {
+          font-size: 16px;
+          padding: 12px 20px;
+      }
+
+    .category-block {
+        border: 1px solid lightgray;
+        padding: 15px;
+        margin: 10px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .category-block i {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .category-block .category-details i {
+    font-size: 30px;
+    margin-top: 17px;
+    margin-left: 12px;
+}
+
+
+    .category-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; /* Añadir alineación al centro */
+      width: 100%;
+      flex-direction: row; /* Cambio a row para que esté horizontal */
+  }
+  
+
+    .category-link {
+        text-align: center;
+        width: 100%
+        margin-top: 15px;
+    }
+
+    .horizontal-center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;  
+}
+
+.main-logo {
+    position: absolute;
+    bottom: 1px;
+    right: 160px;
+    width: 70px;
+    height: auto;
+}
+.user-name {
+    font-size: 15px; /* Reduce el tamaño de la letra */
+    margin-left: 20px; /* Mueve el texto hacia la derecha */
+}
+
+.btn-custom {
+    background-color: #5fb523; /* Color de fondo verde */
+    color: white; /* Color de letra blanco */
+    border: 2px solid white; /* Borde externo blanco */
+    padding: 10px 18px; /* Ajuste del padding para compensar el borde adicional */
+    position: relative; /* Para posicionar el marco interno */
+}
+
+.btn-custom::before {
+    content: ''; /* Contenido vacío para el pseudo-elemento */
+    position: absolute; /* Posicionamiento absoluto para el marco interno */
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border: 1px solid white; /* Marco interno blanco */
+}
+
+.category-name {
+  font-family: 'Proxima Nova', sans-serif;
+  font-weight: 500;
+}
+
+.category-total {
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+</style>
+
+<div class="container mt-5">
+    <nav class="navbar navbar-expand-lg" style="background-color: #3778c2; padding: 20px 0">
+        <div class="login-nav">
+        <span class="navbar-brand user-name">
+        <%= current_user.name %>
+    </span>
+    
+            <span class="navbar-text">
+                Categories
+            </span>
+            <% if user_signed_in? %>
+            <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "login-btn" %>
+        <% end %>
+        </div>
+    </nav>
+
+    <div class="mt-5">
+        <% @groups.each do |group| %>
+          <div class="category-block">
+          <div class="category-details">
+              <i class="<%= group.icon %>" aria-label="<%= group.name %> Icon"></i>
+              <h3 class="category-name"><%= group.name %></h3>
+              <p class="category-total">$ <%= group.entities.sum(:amount) %></p>
+          </div>
+          <div class="category-link">
+              <%= link_to 'View Transactions', group_entities_path(group) %>
+          </div>
+      </div>
+      
+        <% end %>
+
+        <!-- Utilizando la clase para centrar "Add a new category" -->
+        <div class="horizontal-center">
+        <%= link_to 'ADD CATEGORY', new_group_path, class: "mt-4 btn btn-custom" %>
+
+        </div>
+    </div>
+    <img src="<%= asset_path 'actions-logo-noback.PNG' %>" alt="Actions App Logo" class="main-logo">
+</div>
