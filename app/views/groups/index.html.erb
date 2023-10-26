@@ -36,7 +36,7 @@ body, html {
   .navbar-text {
     justify-content: center;
     margin: 0;
-    margin-left: 70px;
+    margin-left: 2px;
     flex-grow: 1;
     text-align: center;
 }
@@ -126,12 +126,39 @@ margin-top: 20px;  /* Añadir una pequeña separación en la parte superior */
     width: 70px;
     height: auto;
 }
+.user-name {
+    font-size: 15px; /* Reduce el tamaño de la letra */
+    margin-left: 20px; /* Mueve el texto hacia la derecha */
+}
+
+.btn-custom {
+    background-color: #5fb523; /* Color de fondo verde */
+    color: white; /* Color de letra blanco */
+    border: 2px solid white; /* Borde externo blanco */
+    padding: 10px 18px; /* Ajuste del padding para compensar el borde adicional */
+    position: relative; /* Para posicionar el marco interno */
+}
+
+.btn-custom::before {
+    content: ''; /* Contenido vacío para el pseudo-elemento */
+    position: absolute; /* Posicionamiento absoluto para el marco interno */
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border: 1px solid white; /* Marco interno blanco */
+}
+
 
 </style>
 
 <div class="container mt-5">
     <nav class="navbar navbar-expand-lg" style="background-color: #3778c2; padding: 20px 0">
         <div class="login-nav">
+        <span class="navbar-brand user-name">
+        <%= current_user.name %>
+    </span>
+    
             <span class="navbar-text">
                 Categories
             </span>
@@ -147,7 +174,7 @@ margin-top: 20px;  /* Añadir una pequeña separación en la parte superior */
                 <i class="<%= group.icon %>" aria-label="<%= group.name %> Icon"></i>
                 <div class="category-details">
                     <h3><%= group.name %></h3>
-                    <p>Total: <%= group.entities.sum(:amount) %></p>
+                    <p>$ <%= group.entities.sum(:amount) %></p>
                 </div>
                 <div class="category-link">
                     <%= link_to 'View Transactions', group_entities_path(group) %>
@@ -157,7 +184,8 @@ margin-top: 20px;  /* Añadir una pequeña separación en la parte superior */
 
         <!-- Utilizando la clase para centrar "Add a new category" -->
         <div class="horizontal-center">
-            <%= link_to 'Add a new category', new_group_path, class: "mt-4 btn btn-primary" %>
+        <%= link_to 'ADD CATEGORY', new_group_path, class: "mt-4 btn btn-custom" %>
+
         </div>
     </div>
     <img src="<%= asset_path 'actions-logo-noback.PNG' %>" alt="Actions App Logo" class="main-logo">

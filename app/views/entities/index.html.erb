@@ -104,8 +104,10 @@ a {
     flex-direction: column;
     align-items: center;
     gap: 20px; /* Esto añade espacio entre los botones */
+    margin-top: 30px; /* This moves the button a bit downwards */
     margin-bottom: 20px;
 }
+
 
 
 .main-logo {
@@ -116,15 +118,29 @@ a {
 }
 
 .btn-primary {
-    background-color: #3778c2;
+    background-color: #5fb523;
     color: #fff;
-    border: none;
+    border: 2px solid white;
     border-radius: 5px;
     width: 100%;
-    max-width: 300px;
+    max-width: 200px;
     display: block;
     text-align: center;
+    position: relative; 
+    overflow: hidden;   
 }
+
+.btn-primary::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    border: 1px solid white; /* Añade un borde punteado, pero puedes modificarlo según tus necesidades */
+    pointer-events: none; /* Asegura que el pseudo-elemento no interfiera con los eventos del ratón */
+}
+
 
 .icon-list {
     display: flex;
@@ -175,6 +191,7 @@ a {
     margin-top: 20px;
     width: 100%;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    font-family: 'Proxima Nova', sans-serif;
 }
 
 .table th, .table td {
@@ -214,7 +231,7 @@ h3.text-center {
         </div>
     </nav>
 
-    <h3 class="text-center mt-4">Total Amount: <%= @total_amount %></h3>
+    <h3 class="text-center mt-4">Total: $ <%= @total_amount %></h3>
 
     <div class="table-responsive mt-4">
         <table class="table">
@@ -237,7 +254,7 @@ h3.text-center {
 
     <!-- Botones después de la tabla -->
     <div class="horizontal-center">
-        <%= link_to 'Add a new transaction', new_group_entity_path(@group), class: 'btn btn-primary' %>
+        <%= link_to 'ADD NEW TRANSACTION', new_group_entity_path(@group), class: 'btn btn-primary' %>
         <%= link_to 'Back', root_path, class: "btn btn-secondary" %>
     </div>
     
