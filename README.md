@@ -68,7 +68,10 @@ mobile web application where you can manage your budget: you have a list of tran
 
 ### Key Features <a name="key-features"></a>
 - [X] **Database**
-- [X] **Transactions**
+- [X] **Add Transactions**
+- [X] **Total Amount of Transactions**
+- [X] **Create Categories**
+- [X] **Add Transactions to Categories**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -139,10 +142,14 @@ I'd like to express my gratitude to everyone who made this project possible.
 
 Thanks again to everyone who believed in this project and helped make it a reality!
 
+Original design idea by [Gregoire Vella on Behance](https://www.behance.net/gregoirevella).
+
 <!--- Future Features ---->
 
 ## <a href="#future-features"></a>🔮 Future Features
-- Improve UI design
+- Add profile picture
+- Desktop design
+- Improve Color Palette
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
