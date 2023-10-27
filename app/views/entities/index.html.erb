@@ -3,6 +3,36 @@ body, html {
     margin: 0;
 }
 
+.container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.mt-4 {
+  margin-top: 0 !important;
+}
+
+.container {
+    display: flex;        
+    flex-direction: column; 
+    min-height: 100vh;     
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.table-responsive {
+    flex: 1 1 auto; 
+    overflow-y: auto;        
+}
+
+.footer-logo {
+    flex-shrink: 0;
+    align-self: flex-end;
+    margin-top: auto;
+    margin-bottom: 20px;
+    padding: 20px 0;
+}
+
 .navbar {
     width: 100%;
 }
@@ -109,12 +139,12 @@ a {
 }
 
 
-
 .main-logo {
-    position: fixed;
-    bottom: 10px;
+    position: absolute;
+    bottom: -150px;
     right: 160px;
     width: 70px;
+    height: auto;
 }
 
 .btn-primary {
@@ -185,7 +215,6 @@ a {
     right: 160px;
 }
 
-/* Added styles */
 .table {
     border-collapse: collapse;
     margin-top: 20px;
@@ -218,8 +247,14 @@ h3.text-center {
     font-family: 'Proxima Nova', sans-serif;
 }
 
+.btn-secondary {
+    background-color: #fff;
+    border: none;
+    color: #adb5bd;
+}
+
 </style>
-<div class="container mt-5">
+<div class="container">
     <nav class="navbar navbar-expand-lg" style="background-color: #3778c2; padding: 20px 0">
         <div class="login-nav">
             <span class="navbar-text">
@@ -254,9 +289,11 @@ h3.text-center {
 
     <!-- Botones después de la tabla -->
     <div class="horizontal-center">
-        <%= link_to 'ADD NEW TRANSACTION', new_group_entity_path(@group), class: 'btn btn-primary' %>
+        <%= link_to 'ADD NEW TRANSACTION', new_group_entity_path(@group), class: 'btn btn-primary mt-1' %>
         <%= link_to 'Back', root_path, class: "btn btn-secondary" %>
     </div>
     
+    <div class="footer-logo">
     <img src="<%= asset_path 'actions-logo-noback.PNG' %>" alt="Actions App Logo" class="main-logo">
+</div>
 </div>

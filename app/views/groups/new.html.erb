@@ -3,6 +3,16 @@ body, html {
   margin: 0;
    }
 
+   .container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.mt-4 {
+  margin-top: 0 !important;
+}
+
+
   .navbar {
   width: 100%;
    }
@@ -158,15 +168,15 @@ margin-top: 20px;
     width: 100%;
     font-size: 16px;
     padding: 12px 20px;
-    border: none;  /* Elimina el borde */
-    border-radius: 0;  /* Sin bordes redondeados */
+    border: none;  
+    border-radius: 0;  
     box-shadow: none;  /* Elimina la sombra */
-    background-color: #f3f3f3;  /* Fondo claro para la barra */
-    box-sizing: border-box; /* Asegura que el padding y el borde estén incluidos en el tamaño total */
+    background-color: #f3f3f3; 
+    box-sizing: border-box; 
 }
 
 .form-group {
-    margin-bottom: 20px;  /* Espacio entre el input y el botón */
+    margin-bottom: 20px; 
     font-family: 'Proxima Nova', sans-serif;
 }
 
@@ -177,8 +187,9 @@ margin-top: 20px;
 }
 .btn-secondary {
   position: fixed;
-  bottom: 200px;
   right: 170px;
+  background-color: #3778c2;
+  border: none;
 }
 
 .back-btn-top-left {
@@ -192,7 +203,7 @@ margin-top: 20px;
 
 </style>
 
-<div class="container mt-5">
+<div class="container">
     <nav class="navbar navbar-expand-lg" style="background-color: #3778c2; padding: 20px 0">
         <div class="login-nav">
             <span class="navbar-text">
@@ -204,7 +215,7 @@ margin-top: 20px;
         </div>
     </nav>
 
-    <div class="form-wrapper mt-5">
+    <div class="form-wrapper mt-3">
 
         <%= form_for @group, html: { class: 'mt-3' } do |f| %>
             <% if @group.errors.any? %>
@@ -219,7 +230,7 @@ margin-top: 20px;
             <% end %>
 
             <div class="form-group">
-            <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
+            <%= f.text_field :name, class: 'form-control', placeholder: 'Name your new category' %>
         </div>
         
 
@@ -239,7 +250,7 @@ margin-top: 20px;
         
 
             <div class="form-group mt-4">
-                <%= f.submit "Save", class: 'btn btn-primary' %>
+                <%= f.submit "Save", class: 'mt-5 btn btn-primary' %>
             </div>
         <% end %>
 
