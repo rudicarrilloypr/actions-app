@@ -3,6 +3,15 @@ body, html {
   margin: 0;
    }
 
+   .container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.mt-4 {
+  margin-top: 0 !important;
+}
+
   .navbar {
   width: 100%;
    }
@@ -180,15 +189,15 @@ margin-top: 20px;
 }
 .btn-secondary {
   position: fixed;
-  bottom: 200px;
   right: 170px;
-  position: fixed;
+  background-color: #3778c2;
+  border: none;
 }
 
 .back-btn {
     position: absolute;
-    right: 340px;
-    top: 5%;
+    right: 330px;
+    top: 40%;
     transform: translateY(-50%);
     margin-left: 10px;
     font-size: 24px;
@@ -198,7 +207,7 @@ margin-top: 20px;
 
 </style>
 
-<div class="container mt-5">
+<div class="container">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg" style="background-color: #3778c2; padding: 20px 0">
     <div class="login-nav">
