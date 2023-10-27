@@ -14,6 +14,8 @@
 # 📗 Table of Contents
 
 - [📖  Actions App](#--actions-)
+- [👁️ Deployment ](#-deployment-)
+- [👀 Sneak Peak (Author's App presentation)](#sneak-peak)
 - [🛠 Built With ](#-built-with-)
    - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -43,6 +45,24 @@
 
 
 mobile web application where you can manage your budget: you have a list of transactions associated with a category, so that you can see how much money you spent and on what.
+
+<!-- Deployment -->
+
+## 👁️ Deployment <a name="deployment"></a>
+[Click here](https://actions-app.onrender.com) to see the Action's app deployment.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- Sneak Peak -->
+
+## 👀 Sneak Peak <a name="sneak-peak"></a>
+[Click here](https://www.loom.com/share/264b05e221ce480f9118b43e1f8faa58?sid=f2c31a3a-f11d-4625-9fe8-e0ad676979ad) to see the author's app short presentation.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- Built with -->
 
 ## 🛠 Built With <a name="built-with"></a>
 - Ruby on Rails
