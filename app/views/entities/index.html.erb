@@ -69,7 +69,7 @@ a {
     color: lightgray;
     text-align: center;
     align-items: center;
-    margin: 5px 10px;
+    margin: 0 10px; 
     font-family: 'Proxima Nova', sans-serif;
 }
 
@@ -148,27 +148,29 @@ a {
 }
 
 .btn-primary {
-    background-color: #5fb523;
-    color: #fff;
-    border: 2px solid white;
-    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    max-width: 200px;
-    display: block;
+    height: 90px;
+    position: fixed;
+    bottom: 0;
+    left: 100;
+    z-index: 1000;
+    background-color: #5fb523;
+    color: white;
+    border: none;
     text-align: center;
-    position: relative; 
-    overflow: hidden;   
 }
 
 .btn-primary::before {
-    content: "";
-    position: absolute;
-    top: 5px;
-    bottom: 5px;
-    left: 5px;
-    right: 5px;
-    border: 1px solid white; 
-    pointer-events: none; 
+    content: ''; 
+    position: absolute; 
+    top: 12px;
+    left: 15px;
+    right: 15px;
+    bottom: 12px;
+    border: 1.1px solid white;
 }
 
 
@@ -248,9 +250,18 @@ h3.text-center {
 }
 
 .btn-secondary {
-    background-color: #fff;
-    border: none;
-    color: #adb5bd;
+  position: fixed;
+  right: 170px;
+  background-color: #3778c2;
+  border: none;
+}
+
+.back-btn-top-left {
+    position: absolute;
+    top: 14px;
+    right: 340px;
+    font-size: 24px;
+    text-decoration: none;
 }
 
 </style>
@@ -290,7 +301,7 @@ h3.text-center {
     <!-- Botones después de la tabla -->
     <div class="horizontal-center">
         <%= link_to 'ADD NEW TRANSACTION', new_group_entity_path(@group), class: 'btn btn-primary mt-1' %>
-        <%= link_to 'Back', root_path, class: "btn btn-secondary" %>
+        <%= link_to '<', root_path, class: "btn btn-secondary back-btn-top-left" %>
     </div>
     
     <div class="footer-logo">
