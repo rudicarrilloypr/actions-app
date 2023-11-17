@@ -5,4 +5,6 @@ class Entity < ApplicationRecord
 
   validates :name, presence: true
   validates :amount, presence: true, numericality: true
+  validates :author_id, presence: true
 end
+
