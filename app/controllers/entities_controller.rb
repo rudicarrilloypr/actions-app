@@ -13,7 +13,7 @@ class EntitiesController < ApplicationController
 
   def create
     @entity = @group.entities.build(entity_params)
-    @entity.author = current_user
+    # @entity.author = current_user
 
     if @entity.save
       redirect_to group_entities_path(@group), notice: 'Transaction added successfully!'
