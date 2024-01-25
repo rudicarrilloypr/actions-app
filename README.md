@@ -168,8 +168,16 @@ Original design idea by [Gregoire Vella on Behance](https://www.behance.net/greg
 
 ## <a href="#future-features"></a>🔮 Future Features
 - Add profile picture
-- Desktop design
+- Full Responsive design
 - Improve Color Palette
+- Delete Categories
+- Edit Categories
+- Delete Transactions
+- Edit Transactions
+- Add a search bar to filter transactions
+- Add a search bar to filter categories
+- Add a search bar to filter transactions by category
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
